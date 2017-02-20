@@ -8,7 +8,6 @@
 {-# LANGUAGE DeriveGeneric #-}
 module OpenAI.Gym.Data
   ( GymEnv (..)
-  , EnvID (..)
   , InstID (..)
   , Environment (..)
   , Observation (..)
@@ -48,14 +47,9 @@ instance Show GymEnv where
   show PongRamV0               = "Pong-ram-v0"
   show PongV0                  = "Pong-v0"
 
+
 instance ToJSON GymEnv where
-  toJSON = String . T.pack . show
-
-
-newtype EnvID = EnvID { env_id :: GymEnv }
-  deriving Generic
-
-instance ToJSON EnvID
+  toJSON env = object ["env_id" .= show env]
 
 
 newtype InstID = InstID { instance_id :: Text }
@@ -72,7 +66,7 @@ instance ToJSON Environment
 instance FromJSON Environment
 
 
-newtype Observation = Observation { observation :: Array }
+newtype Observation = Observation { observation :: Value }
   deriving (Eq, Show, Generic)
 
 instance ToJSON Observation
@@ -80,7 +74,7 @@ instance FromJSON Observation
 
 
 data Step = Step
-  { action :: !Int
+  { action :: !Value
   , render :: !Bool
   } deriving Generic
 
@@ -88,7 +82,7 @@ instance ToJSON Step
 
 
 data Outcome = Outcome
-  { observation :: !Array
+  { observation :: !Value
   , reward      :: !Double
   , done        :: !Bool
   , info        :: !Object
@@ -105,7 +99,7 @@ instance ToJSON Info
 instance FromJSON Info
 
 
-newtype Action = Action { action :: Int }
+newtype Action = Action { action :: Value }
   deriving (Eq, Show, Generic)
 
 instance ToJSON Action

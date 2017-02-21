@@ -82,13 +82,15 @@ instance ToJSON Step
 
 
 data Outcome = Outcome
-  { observation :: !Value
-  , reward      :: !Double
-  , done        :: !Bool
-  , info        :: !Object
+  { obs    :: !Value
+  , reward :: !Double
+  , done   :: !Bool
+  , info   :: !Object
   } deriving (Eq, Show, Generic)
 
-instance ToJSON Outcome
+instance ToJSON Outcome where
+  toJSON (Outcome o r d i) =
+    object ["observation" .= o, "reward" .= r, "done" .= d, "info" .= i]
 instance FromJSON Outcome
 
 

@@ -48,12 +48,13 @@ import Servant.Client as X
 
 import OpenAI.Gym.API
 import OpenAI.Gym.Prelude
+import Control.Monad.Catch
 
 
 -- | GymClient is our primary computational context
 newtype GymClient a =
   GymClient { getGymClient :: ReaderT (Manager, BaseUrl) ClientM a }
-  deriving (Functor, Applicative, Monad)
+  deriving (Functor, Applicative, Monad, MonadThrow)
 
 
 runGymClient :: Manager -> BaseUrl -> GymClient a -> IO (Either ServantError a)

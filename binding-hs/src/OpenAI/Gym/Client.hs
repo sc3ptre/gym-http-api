@@ -41,6 +41,7 @@ import Network.HTTP.Client as X
 import Servant.Client as X
   ( BaseUrl(..)
   , Scheme(..)
+  , ServantError(..)
   )
 
 -- ========================================================================= --

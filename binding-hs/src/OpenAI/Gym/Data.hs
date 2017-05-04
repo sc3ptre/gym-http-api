@@ -48,6 +48,7 @@ instance Show GymEnv where
   show MountainCarV0           = "MountainCar-v0"
   show MountainCarContinuousV0 = "MountainCarContinuous-v0"
   show PendulumV0              = "Pendulum-v0"
+  show FrozenLakeV0            = "FrozenLake-v0"
   show PongRamV0               = "Pong-ram-v0"
   show PongV0                  = "Pong-v0"
 

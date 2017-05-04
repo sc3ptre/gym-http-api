@@ -221,8 +221,13 @@ def env_reset(instance_id):
     Returns:
         - observation: the initial observation of the space
     """
-    observation = envs.reset(instance_id)
-    return jsonify(observation = observation)
+    obs = envs.reset(instance_id)
+
+    if isinstance(obs, np.number):
+        numeric_obs = (int if np.issubdtype(obs, int) else float)(obs)
+        return jsonify(observation = numeric_obs)
+    else:
+        return jsonify(observation = obs)
 
 @app.route('/v1/envs/<instance_id>/step/', methods=['POST'])
 def env_step(instance_id):

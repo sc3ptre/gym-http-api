@@ -1,9 +1,10 @@
--- This file has been generated from package.yaml by hpack version 0.15.0.
+-- This file has been generated from package.yaml by hpack version 0.17.0.
 --
 -- see: https://github.com/sol/hpack
 
 name:           gym-http-api
 version:        0.1.0.0
+synopsis:       bindings to gym-http-api
 description:    Haskell binding for the OpenAi gym API
 category:       Web
 homepage:       https://github.com/openai/gym-http-api#readme
@@ -11,7 +12,7 @@ bug-reports:    https://github.com/openai/gym-http-api/issues
 author:         Daniel Lucsanszky, Sam Stites
 maintainer:     dl3913@ic.ac.uk, sam@stites.io
 license:        MIT
-license-file:   ../LICENSE
+license-file:   LICENSE
 build-type:     Simple
 cabal-version:  >= 1.10
 

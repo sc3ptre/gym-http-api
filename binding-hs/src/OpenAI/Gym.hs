@@ -1,4 +1,4 @@
--- * reexports
+-- | reexports
 module OpenAI.Gym
   ( module X
   ) where
